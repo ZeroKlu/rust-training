@@ -47,5 +47,7 @@ edition = "2021"
 
 ```cargo build --release```
 
+```cargo update``` ignores Cargo.lock and updates dependencies
 
+```cargo doc --open``` builds documentation on all current dependencies and opens it in the browser.
 
