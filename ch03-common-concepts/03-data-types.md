@@ -53,9 +53,54 @@ Integer literals can be expressed as:
 
 #### Floating-Point Numbers ####
 
-#### Booleans ####
+There are two floating-point primitives in Rust: f32 and f64.
 
-#### Characters ####
+The default is f64 (on modern PCs, the speed difference is minimal between
+single- and double-precision floats).
+
+Rust floating-point types adhere to the
+[IEEE-754](https://en.wikipedia.org/wiki/IEEE_754) standard
+
+---
+
+#### Boolean ####
+
+The Boolean (bool) type is one byte in size and has two possible values:
+```true``` and ```false```.
+
+```rust
+fn main() {
+    // implicit bool
+    let t = true;
+
+    // explicit bool
+    let f: bool = false;
+}
+```
+
+---
+
+#### Character ####
+
+The character (char) type is four bytes in size and can contain any single
+Unicode character.
+
+In Rust:
+
+* Characters are expressed in single-quotes
+* Strings are expressed in double-quotes
+
+```rust
+fn main() {
+    let c = 'z';
+    let z = 'ℤ'; // Explicit type declaration
+    let smiley = '☺';
+    let emoji = '🙂';
+    println!("{c} {z} {smiley} {emoji}");
+}
+
+// Output in pwsh: "z ℤ ☺ 🙂"
+```
 
 ---
 
