@@ -1,3 +1,6 @@
+### Handle Case Where User Enters Invalid Data ###
+
+```rust
 use std::io;
 use rand::Rng;
 use std::cmp::Ordering;
@@ -16,8 +19,11 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read line!");
     
+        // Use match to evaluate the Result value from parse() to determine if the data is valid
         let guess: u32 = match guess.trim().parse() {
+            // On Ok, we return the integer value
             Ok(num) => num,
+            // On Err, we ignore the value and continue the loop
             Err (_) => continue,
         };
     
@@ -33,3 +39,4 @@ fn main() {
         }
     }
 }
+```
