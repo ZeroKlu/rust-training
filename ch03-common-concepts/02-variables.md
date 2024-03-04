@@ -32,6 +32,10 @@ const SECONDS_PER_HOUR: u32 = 60 * 60;
 
 ### Shadowing ###
 
+Shadowing allows the reuse of a variable name, either in the same
+scope (to replace an existing immutable variable) or a separate one
+(to define the variable for use within both scopes).
+
 ```rust
 let num = 5;
 
@@ -48,6 +52,11 @@ let num = num + 1;
 
 // After exiting the scope, the original variable is unshdowed
 println!("Outer num = {num}") // 6
+
+// We can shadow with a different data type for example,
+//   provided we only need the integer value later in the program
+let spaces = "   ";
+let spaces = spaces.len();
 ```
 
 ---

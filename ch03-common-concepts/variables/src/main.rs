@@ -35,9 +35,15 @@ fn main() {
     {
         // Within inner scope, this num shadows the existing num
         let num = num * 2;
-        println!("Inner num = {num}") // 12
+        println!("Inner num = {num}"); // 12
     }
     
     // After exiting the scope, the original variable is unshdowed
-    println!("Outer num = {num}") // 6
+    println!("Outer num = {num}"); // 6
+
+    // We can shadow with a different data type for example,
+    //   provided we only need the integer value later in the program
+    let spaces = "   ";
+    let spaces = spaces.len();
+    println!("spaces = {spaces}"); // 3, not '   '
 }
