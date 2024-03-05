@@ -56,4 +56,4 @@
 ### Who do I talk to? ###
 
 * Any questions can be addressed to the following
-    * [Zero Klu](mailto:zeroklu@myself.com?subject=Rust%20Training&body=Question%20about%20your%20Rust%20training%20repository%20on%20GitHub:)
+    * [Zero Klu](mailto:zeroklu@myself.com?subject=Rust%20Training&body=Question%20about%20your%20Rust%20Training%20repository%20on%20GitHub:)
