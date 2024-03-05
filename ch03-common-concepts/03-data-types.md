@@ -106,4 +106,92 @@ fn main() {
 
 ### Compound Data Types ###
 
+Compound data types represent collections of values and come in two flavors:
+
+* tuple
+* array
+
 ---
+
+#### Tuples ####
+
+* Tuples are collections of values that can be of different data types
+* Tuples are fixed-size (can neither grow nor shrink after declaration)
+
+```rust
+fn main() {
+    // Type annotations (as below) are optional
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+}
+```
+
+* We can access tuple values using dot-index notation
+
+```rust
+fn main() {
+    let tup: (i32, f64, u8) = (500, 6.4, 1);
+    let five_hundred = tup.0;
+    let six_point_four = tup.1;
+}
+```
+
+* A tuple can unpack to multiple variables (*destructing*)
+
+```rust
+fn main() {
+    let tup: = (500, 6.4, 1);
+    let (x, y, z) = tup;
+    println!("y = {y}");
+}
+```
+
+* A tuple without any values ```()``` is called a *unit* and is the 
+  default return from functions that do not explicitly return a value
+
+---
+
+#### Arrays ####
+
+* Arrays are collections of values that must be of the same data type
+* Arrays are fixed-size (can neither grow nor shrink after declaration)
+    * Although not covered here, the *vector* data type is like a flexible-sized array
+    * Arrays are better when the size is known and doesn't change
+* Arrays are stored on the *stack* as opposed to the *heap* and are correspondingly fast
+
+```rust
+fn main() {
+    let arr = [1, 2, 3, 4, 5];
+
+    let months = [
+        "January", "February", "March", "April",
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
+    ];
+}
+```
+
+* You can specify an array's data type explicitly.
+
+```rust
+fn main() {
+    let nums = [i32; 5] = [1, 2, 3, 4, 5];
+}
+```
+
+* You access array elements by index (0-based)
+
+```rust
+fn main() {
+    let nums = [i32; 5] = [1, 2, 3, 4, 5];
+    let three = nums[2];
+}
+```
+
+* You can initialize an array with the same value at every index:
+
+```rust
+fn main() {
+    // let arr = [true, true, true, true, true];
+    let arr = [true; 5];
+}
+```

@@ -28,7 +28,7 @@ fn main() {
     let num = 5;
 
     // Note: With let, we can replace the immutable variable
-    // Techincally, this is also a shadow, but since it's in the same
+    // Technically, this is also a shadow, but since it's in the same
     //   scope, it is the only one visible to the compiler
     let num = num + 1;
     
@@ -38,7 +38,7 @@ fn main() {
         println!("Inner num = {num}"); // 12
     }
     
-    // After exiting the scope, the original variable is unshdowed
+    // After exiting the scope, the original variable is unshadowed
     println!("Outer num = {num}"); // 6
 
     // We can shadow with a different data type for example,
