@@ -61,6 +61,8 @@ fn square(n: i32) -> i32 {
 
 // or this...
 fn square(n: i32) -> i32 {
+    // If this line was followed by a semicolon, it would be a statement,
+    //  and this would fail to compile, as there would be no return.
     n * n
 }
 
