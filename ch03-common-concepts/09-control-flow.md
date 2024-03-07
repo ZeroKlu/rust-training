@@ -103,6 +103,7 @@ You can use an *if*/*else* expression in a 'let' statement.
 fn main() {
     let condition = true;
 
+    // Note: Both arms must evaluate to the same data type
     let result = if condition {"Yes"} else {"No"};
 }
 ```
@@ -110,5 +111,171 @@ fn main() {
 ---
 
 ### Loops ###
+
+Loops allow repetitions of a code block and come in three flavors:
+
+* loop
+* while
+* for
+
+#### ```loop``` ####
+
+The ```loop``` repeats until it is explicitly told to exit using
+the ```break``` statement.
+
+Note: ```break``` can specify the ```loop```'s return value
+
+```rust
+fn main() {
+    let max = 10;
+    let mut counter = 0;
+    let result = loop {
+        counter += 1;
+        if counter >= max {
+            // End the loop
+            break counter * 2;
+        }
+    };
+    println!("Result: {result}"); // -> Result: 20
+}
+```
+
+We can skip to the next iteration using ```continue```
+
+```rust
+fn main() {
+    let max = 10;
+    let mut counter = 0;
+    let mut sum = 0;
+    loop {
+        counter += 1;
+        if counter >= max {
+            // End the loop
+            break;
+        }
+        if counter % 2 == 0 {
+            // Skip even numbers
+            continue;
+        }
+        sum += counter;
+        println!("{counter}");
+    };
+    println!("Sum: {sum}");
+}
+```
+
+Rust supports loop labels to disambiguate multiple loops
+
+```rust
+fn main() {
+    let mut count = 0;
+    // We're labeling our outer loop
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                // End the inner loop
+                break;
+            }
+            if count == 2 {
+                // Explicitly end the outer loop
+                break 'counting_up;
+            }
+            remaining -= 1;
+        }
+        count += 1;
+    }
+    println!("End count = {count}");
+}
+```
+
+#### ```while``` ####
+
+A while loop executes as long as a condition is true
+
+```rust
+fn main() {
+    let mut num = 3;
+    while num != 0 {
+        println!("{num}");
+        num -= 1;
+    }
+    println!("LIFTOFF!!!");
+}
+```
+
+Although you could create a ```while``` loop as shown below, in
+Rust, the ```while true {}``` concept is equivalent to
+```loop```
+
+```rust
+fn main() {
+    let mut num = 0;
+
+    // This works...
+    // while true {
+    //     if num == 5 {
+    //         break;
+    //     }
+    //     num += 1;
+    //     println!("{num}");
+    // }
+
+    // ... but this is equivalent and preferred
+    loop {
+        if num == 5 {
+            break;
+        }
+        num += 1;
+        println!("{num}");
+    }
+}
+```
+
+#### ```for``` ####
+
+A ```for``` loop is used to iterate across a collection and is the
+same as the *foreach* loop implemented in other languages like C#.
+
+```rust
+fn main() {
+    let list = [1, 2, 3, 4, 5];
+    for elem in list {
+        println!("{elem}");
+    }
+}
+```
+
+You *could* implement the same loop using ```while```, but why *would* you?
+
+```rust
+fn main() {
+    let list = [1, 2, 3, 4, 5];
+    // Equivalent output to the for loop above, but more verbose
+    //   and a little wasteful of memory and CPU
+    let mut index = 0;
+    while index < list.len() {
+        println!("{}", list[index]);
+        index += 1;
+    }
+}
+```
+
+A ```for``` loop can also elegantly replace a counter-style
+```while``` loop by using a range in the form ```(min..max+1)```
+
+You can (optionally) reverse the range with the ```rev()```
+function.
+
+```rust
+fn main() {
+    for n in (1..4).rev() {
+        println!("{n}");
+    }
+    println!("LIFTOFF!!!");
+}
+```
 
 ---
