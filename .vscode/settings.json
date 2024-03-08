@@ -1,9 +1,12 @@
 {
     "cSpell.words": [
+        "deallocate",
         "isize",
         "Klabnik",
+        "malloc",
         "nums",
         "pwsh",
+        "RAII",
         "Rustlang",
         "Rustup",
         "unshadowed",
