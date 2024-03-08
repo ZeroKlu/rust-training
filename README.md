@@ -38,7 +38,9 @@
   Visual Studio Code Extension
     * This extension is required in order to work with Rust in Visual Studio Code
 
-* Optionally install the [code-runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner) Extra Visual Studio Code Extension
+* Optionally install the
+  [code-runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner)
+  Visual Studio Code Extension
     * This extension simplifies running/testing code in a number of languages (including Rust)
 
 ---
