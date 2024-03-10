@@ -138,4 +138,83 @@ This is to prevent the scenario called a *data race*, which is like a
 Many other languages allow mutation anywhere, but that does not prevent
 data races.
 
+Rust, by contrast, will not compile if a data race exists.
+
 ---
+
+### Avoiding Data Races ###
+
+You can create multiple mutable references as long as they do not exist
+simultaneously.
+
+```rust
+let mut s = String::from("hello");
+
+{
+    let ref1 = &mut s; // Mutable reference
+} // ref1 goes out of scope here
+
+let ref2 = &mut s; // This is fine, because ref1 is already invalid
+```
+
+You cannot create a mutable reference when another reference exists,
+even if the other reference is not mutable.
+
+```rust
+let mut s = String::from("hello");
+
+let ref1 = &s;     // no problem
+let ref2 = &s;     // no problem
+let ref3 = &mut s; // PROBLEM - This will produce an error
+
+println!("{ref1}, {ref2}, {ref3}");
+```
+
+References go out of scope the last time they are used in the code, so
+this revision of the above will compile and run.
+
+```rust
+let mut s = String::from("hello");
+
+let ref1 = &s; 
+let ref2 = &s;
+println!("{ref1}, {ref2}"); // Last use of ref1 and ref2
+
+let ref3 = &mut s; // This is OK, because ref1 and ref2 are no longer used
+println!("{ref3}");
+```
+
+---
+
+### Dangling References ###
+
+In many languages with pointers, it is possible to create a reference to a 
+location in memory that has already been freed.
+
+This is known as a *dangling reference*.
+
+Rust prevents this by compiling only if all references to a piece of data
+go out of scope before the data itself.
+
+This will not compile:
+
+```rust
+fn main() {
+    let ref_to_nothing = dangle();
+}
+
+fm dangle() -> &String {
+    let s = String::from("hello");
+    &s
+} // s goes out of scope here (dropped), to the reference would be dangling.
+// Error: missing lifetime specifier
+```
+
+---
+
+### Rules of References ###
+
+* At any time, a variable can have either:
+    * One mutable reference<br>or
+    * Any number of immutable references
+* References must always be valid
