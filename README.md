@@ -10,6 +10,10 @@
 | Author:    | Steve Klabnik and Carol Nichols                                                                          |
 | ISBN:      | [9781718503106](https://isbnsearch.org/isbn/9781718503106)                                               |
 | Publisher: | [No Starch Press](https://nostarch.com/)                                                                 |
+|||
+
+Note: The textbook is also available free online:
+[doc.rust-lang.org/book](https://doc.rust-lang.org/book)
 
 ---
 ### What is this repository for? ###
