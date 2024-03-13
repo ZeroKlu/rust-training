@@ -14,3 +14,5 @@ target/
 *.pdb
 
 *.exe
+target/
+debug/
