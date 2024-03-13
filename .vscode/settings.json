@@ -10,9 +10,14 @@
         "Rustacean",
         "Rustlang",
         "Rustup",
+        "struct",
         "Structs",
         "unshadowed",
         "usize",
         "winget"
+    ],
+    "cSpell.ignoreWords": [
+        "anotheruser",
+        "someuser"
     ]
 }
