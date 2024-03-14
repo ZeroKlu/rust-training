@@ -1,8 +1,10 @@
-## Example Program - Refactor: Struct ##
+## Example Program - Printout: Add Debug Trait ##
 
 An example program that computes the area of a rectangle
 
 ```rust
+// Adding the 'Debug' trait to the Rectangle struct
+#[derive(Debug)]
 struct Rectangle {
     width: f64,
     height: f64,
@@ -18,17 +20,17 @@ fn main() {
         height = get_float("Enter height: ")
     }
 
-    // Using a struct
     let rect = Rectangle {
         width,
         height,
     };
 
     let area = get_area(&rect);
-    println!("\nArea of a {} by {} rectangle = {}", width, height, area);
+    // Because we have the 'Debug' trait, we can now print the Rectangle
+    println!("\n{:#?}", rect);
+    println!("Area: {:.2}\n", area);
 }
 
-// Now we have meaning and a single object
 fn get_area(rectangle: &Rectangle) -> f64 {
     rectangle.width * rectangle.height
 }
@@ -43,5 +45,27 @@ fn get_float(message: &str) -> f64 {
     }
 }
 ```
+
+---
+
+Note: The 'Debug' trait also allows the use of the ```dbg!()``` macro
+
+```rust
+// * SNIP *
+
+    let rect = Rectangle {
+        width,
+        height,
+    };
+
+    dbg!(rect); // Prints out line number and value
+
+// * SNIP *
+```
+
+---
+
+Follow-up Reading:
+[Rust Attributes](https://doc.rust-lang.org/reference/attributes.html)
 
 ---

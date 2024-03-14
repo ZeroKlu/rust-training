@@ -1,6 +1,25 @@
+#[derive(Debug)]
 struct Rectangle {
     width: f64,
     height: f64,
+}
+
+impl Rectangle {
+    fn area(&self) -> f64 {
+        self.width * self.height
+    }
+
+    fn valid(&self) -> bool {
+        self.width() && self.height()
+    }
+
+    // Can use the same name as field
+    fn width(&self) -> bool {
+        self.width > 0.0
+    }
+    fn height(&self) -> bool {
+        self.height > 0.0
+    }
 }
 
 fn main() {
@@ -18,12 +37,10 @@ fn main() {
         height,
     };
 
-    let area = get_area(&rect);
-    println!("\nArea of a {} by {} rectangle = {}", width, height, area);
-}
+    println!("\n{:#?}", rect);
 
-fn get_area(rectangle: &Rectangle) -> f64 {
-    rectangle.width * rectangle.height
+    let prefix = if rect.valid() {""} else {"Invalid "};
+    println!("{prefix}Area: {:.2}\n", rect.area());
 }
 
 fn get_float(message: &str) -> f64 {

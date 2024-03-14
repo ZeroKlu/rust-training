@@ -173,5 +173,3 @@ to set ```active``` and ```sign_in_count```, then ```user1``` would
 remain valid.
 
 ---
-
-

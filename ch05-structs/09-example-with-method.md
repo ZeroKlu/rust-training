@@ -1,11 +1,27 @@
-## Example Program - Refactor: Struct ##
+## Example Program - Adding a Method ##
 
 An example program that computes the area of a rectangle
 
+We can add a method to a struct as seen below.
+
+Notes:
+
+The first argument to the method is either:
+* ```&self``` if not modifying the struct<br>or
+* ```&mut self``` to borrow as mutable
+
 ```rust
+#[derive(Debug)]
 struct Rectangle {
     width: f64,
     height: f64,
+}
+
+// Here we're adding a method to the struct
+impl Rectangle {
+    fn area(&self) -> f64 {
+        self.width * self.height
+    }
 }
 
 fn main() {
@@ -18,19 +34,14 @@ fn main() {
         height = get_float("Enter height: ")
     }
 
-    // Using a struct
     let rect = Rectangle {
         width,
         height,
     };
 
-    let area = get_area(&rect);
-    println!("\nArea of a {} by {} rectangle = {}", width, height, area);
-}
-
-// Now we have meaning and a single object
-fn get_area(rectangle: &Rectangle) -> f64 {
-    rectangle.width * rectangle.height
+    println!("\n{:#?}", rect);
+    // Call the method
+    println!("Area: {:.2}\n", rect.area());
 }
 
 fn get_float(message: &str) -> f64 {
