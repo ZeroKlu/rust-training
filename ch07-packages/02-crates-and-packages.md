@@ -40,8 +40,20 @@ This generates the following items
 :   :   └── main.rs
 ```
 
+Note: Cargo.toml does not mention /src/main.rs. This is because Cargo follows 
+the convention that the *crate root* of the package is:
+* ***src/main.rs*** for a binary package<br>or
+* ***src/lib.rs*** for a library package
+
+If the package contains both *src/main.rs* and *src/lib.rs*, then Cargo will
+understand that it contains both binary and library crates and build both.
+Both will have the same name as the package.
+
+Additionally, you can include multiple binary crates by including them in
+the *src/bin* directory.
+
 ---
 
-Note: The book provides a "cheat sheet" at this point. It has been recreated as:<br>[x01-modules-cheat-sheet.md](./x01-modules-cheat-sheet.md)
+Note: The book provides a "cheat sheet" at this point. It has been recreated as:<br>[02cs-modules-cheat-sheet.md](./02cs-modules-cheat-sheet.md)
 
 ---
