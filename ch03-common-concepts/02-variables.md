@@ -26,7 +26,13 @@ y = 2;
 ### Constants ###
 
 Constants are always immutable and must be declared with a data
-type and a value
+type and a value. The value must be able to be computed at 
+compile-time.
+
+They can be declared in any scope, including global.
+
+Constants are valid throughout runtime within the scope in which 
+they are declared.
 
 It's conventional to name constants in UPPER_SNAKE_CASE
 
@@ -41,6 +47,8 @@ const SECONDS_PER_HOUR: u32 = 60 * 60;
 Shadowing allows the reuse of a variable name, either in the same
 scope (to replace an existing immutable variable) or a separate one
 (to define the variable for use within both scopes).
+
+Note: You cannot shadow a mutable variable.
 
 ```rust
 let num = 5;

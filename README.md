@@ -15,6 +15,9 @@
 Note: The textbook is also available free online:
 [doc.rust-lang.org/book](https://doc.rust-lang.org/book)
 
+Brown University also has a version with quizzes:
+[rust-book.cs.brown.edu](https://rust-book.cs.brown.edu)
+
 ---
 ### What is this repository for? ###
 

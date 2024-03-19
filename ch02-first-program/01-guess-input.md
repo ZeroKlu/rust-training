@@ -14,6 +14,7 @@ fn main() {
 
     // read_line() returns a Result (enum: Ok | Err)
     //             .expect() executes if Result is Err
+    //                       and returns the value if Ok
     io::stdin()
         .read_line(&mut guess)
         .expect("Failed to read line!");

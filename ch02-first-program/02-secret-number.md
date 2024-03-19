@@ -14,7 +14,7 @@ rand = "0.8.5"
 
 ```rust
 use std::io;
-use rand::Rng; // Adding in the namespace/class
+use rand::Rng; // Adding in the namespace & trait
 
 fn main() {
     println!("Guess the number!");

@@ -25,12 +25,12 @@ Several integer types are available (see table below):
 
 |Length|Similar Type|Signed|Unsigned|
 |-|-|-|-|
-|8-bit|byte|i8|u8|
-|16-bit|short|i16|u16|
-|32-bit|int|i32|u32|
-|64-bit|long|i64|u64|
-|128-bit|-|i128|u128|
-|arch|architecture-dependent|isize|usize|
+|8-bit|byte|```i8```|```u8```|
+|16-bit|short|```i16```|```u16```|
+|32-bit|int|```i32```|```u32```|
+|64-bit|long|```i64```|```u64```|
+|128-bit|-|```i128```|```u128```|
+|arch|architecture-dependent|```isize```|```usize```|
 |||||
 
 Integers support use of an underscore (a la Python) as a separator.
@@ -42,11 +42,11 @@ Integer literals can be expressed as:
 
 |Number Literals|Example|
 |-|-|
-|Decimal|255|
-|Hexadecimal|0xff|
-|Octal|0o377|
-|Binary|0b1111_1111|
-|Byte (u8 only)|b'\*' (* = any ASCII char)|
+|Decimal|```255```|
+|Hexadecimal|```0xff```|
+|Octal|```0o377```|
+|Binary|```0b1111_1111```|
+|Byte (u8 only)|```b'\*'``` (* = any ASCII char)|
 |||
 
 ---
@@ -93,7 +93,7 @@ In Rust:
 ```rust
 fn main() {
     let c = 'z';
-    let z = 'ℤ'; // Explicit type declaration
+    let z: char = 'ℤ'; // Explicit type annotation
     let smiley = '☺';
     let emoji = '🙂';
     println!("{c} {z} {smiley} {emoji}");
