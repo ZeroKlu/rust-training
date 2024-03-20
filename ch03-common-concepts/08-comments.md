@@ -3,8 +3,23 @@
 Rust has three flavors of comments:
 
 * Single- or partial-line comments using ```//```
+  ```rust
+  // This is a simple comment
+  ```
 * Multi-line comments using ```//``` on each line
-    * Rust supports block comments ```/* ... */```, but line-comments are preferred
+  ```rust
+  // This is a multi-line comment
+  // It is used when the information to convey does not
+  //   fit on a single line
+  ```
+    * Rust supports block comments ```/* ... */```, 
+      but line-comments are preferred
+      ```rust
+      /* 
+       * This style of comment is supported for
+       * multi-line, but is not preferred.
+       */
+      ```
 * Documentation comments using ```///```
 
 ---

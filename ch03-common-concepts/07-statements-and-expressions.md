@@ -1,5 +1,8 @@
 ## Statements and Expressions ##
 
+A function body is made up of a series of statements optionally
+ending in an expression (return value).
+
 ### Definitions ###
 
 * **Statement:**<br>
@@ -45,6 +48,10 @@ fn main() {
 ### Expressions ###
 
 Expressions can be any instruction that evaluates to a value.
+
+Note: The operand to the right of an assignment operator must be
+an expression, but any expression (even a complex one like a
+code block) is valid.
 
 ```rust
 fn main() {

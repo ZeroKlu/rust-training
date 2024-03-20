@@ -26,9 +26,9 @@ fn hello_world() {
 
 ### Function Parameters ###
 
-Functions can accept any number of arguments.
+Functions can accept any number of parameters.
 
-Arguments must include data type annotations.
+Parameters must include data type annotations.
 
 ```rust
 // Function with a parameter
