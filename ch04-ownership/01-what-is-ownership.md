@@ -15,6 +15,23 @@ memory-safe without the implementation of a garbage collector.
 
 ---
 
+### What's the point? ###
+
+In many languages, when the code attempts to access a variable,
+the variable must be checked to ensure it is initialized. Then,
+if the variable is not defined or initialized, the language will
+raise an exception.
+
+This results is a large number of costly (in CPU terms) runtime
+checks.
+
+By preventing code from compiling in an unsafe state, Rust
+minimizes the number of runtime checks required to execute the
+code. Moving the majority of checks to compile-time results in
+a more efficient (read "faster") program.
+
+---
+
 ### Stack vs. Heap ###
 
 In Rust, the behavior of the language depends on whether a value is on the

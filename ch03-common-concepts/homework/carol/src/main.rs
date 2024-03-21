@@ -22,7 +22,7 @@ fn get_verse(n: i32) {
     println!("On the {} day of Christmas, my true love gave to me...", ordinal(n));
     for day in (1..n + 1).rev() {
         let prefix = if day == 1 && n != 1 {"And "} else {""};
-        let suffix = if day == 1 {".\n"} else {","};
+        let suffix = if day == 1 {".\n"} else {if day == 5 {" ..."} else {","}};
         println!("{}{} {}{}", prefix, num_to_name(day), verses[(day - 1) as usize], suffix);
     }
 }
