@@ -68,7 +68,39 @@ In Rust terms, the string that was originally owned by s1 has *moved* to s2.
   copy is made only of the reference, not the value).
 * Where ```move``` differs is that only the new copy is active
 
-Note: By implication, this means that Rust will *never* automatically make
-a deep copy of the original variable.
+Note: By implication, this means that Rust will never *automatically* make a deep copy of the original variable.
+
+---
+
+### Variables Cannot Be Used After Being Moved ###
+
+If we imagine a scenario where Rust does not prevent accessing a
+moved variable, we might see something like this:
+
+```rust
+// Note: This will not compile
+fn main() {
+    let first = String::from("Ferris");
+    let full = add_suffix(first); // Variable is moved
+    // Here, we attempt to access the moved variable 'first'
+    println!("{full} was originally {first}"); // [L1]
+}
+
+fn add_suffix(mut name: String) -> String {
+    name.push_str(" Jr.");
+    name
+}
+```
+
+<image src="../additional-files/images/diagram0401g.png"
+       style="width:260px;" alt="Diagram 4.gf"
+       title="Diagram 4.1g">
+
+---
+
+### Moved Heap Data Principle ###
+
+If a variable ```x``` moves ownership of heap data to another
+variable ```y```, then ```x``` cannot be used after the move.
 
 ---
