@@ -92,9 +92,10 @@ fn add_suffix(mut name: String) -> String {
 }
 ```
 
-<image src="../additional-files/images/diagram0401g.png"
-       style="width:260px;" alt="Diagram 4.gf"
-       title="Diagram 4.1g">
+<img src="../additional-files/images/diagram0401g.png"
+     style="width:260px;" alt="Diagram 4.gf"
+     title="Diagram 4.1g">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 ---
 

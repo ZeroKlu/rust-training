@@ -120,9 +120,10 @@ The diagram below visualizes the contents of memory at the
 points labeled in the comments.
 
 <!-- ![image](../additional-files/images/diagram0401a.png) -->
-<image src="../additional-files/images/diagram0401a.png"
-       style="width:300px;" alt="Diagram 4.1a"
-       title="Diagram 4.1a">
+<img src="../additional-files/images/diagram0401a.png"
+     style="width:300px;" alt="Diagram 4.1a"
+     title="Diagram 4.1a">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 Variables live in **frames**, which are mappings from variables
 to values within a single scope. In this example:
@@ -152,9 +153,10 @@ let mut b = a; // [L2]
 b += 1; // [L3]
 ```
 
-<image src="../additional-files/images/diagram0401b.png"
-       style="width:260px;" alt="Diagram 4.1b"
-       title="Diagram 4.1b">
+<img src="../additional-files/images/diagram0401b.png"
+     style="width:260px;" alt="Diagram 4.1b"
+     title="Diagram 4.1b">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 The value of ```a``` is copied into ```b```, so modifying
 ```b``` does not change ```a```.
@@ -174,9 +176,10 @@ let a = [0; 1_000_000]; // [L1]
 let b = a; // [L2]
 ```
 
-<image src="../additional-files/images/diagram0401c.png"
-       style="width:200px;" alt="Diagram 4.1c"
-       title="Diagram 4.1c">
+<img src="../additional-files/images/diagram0401c.png"
+     style="width:200px;" alt="Diagram 4.1c"
+     title="Diagram 4.1c">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 ---
 
@@ -194,9 +197,10 @@ let a = Box::new([0; 1_000_000]); // [L1]
 let b = a; // L2
 ```
 
-<image src="../additional-files/images/diagram0401d.png"
-       style="width:280px;" alt="Diagram 4.1d"
-       title="Diagram 4.1d">
+<img src="../additional-files/images/diagram0401d.png"
+     style="width:280px;" alt="Diagram 4.1d"
+     title="Diagram 4.1d">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 This way:
 
@@ -221,9 +225,10 @@ free(b); // [L2]
 assert!(b[0] == 0); // [L3]
 ```
 
-<image src="../additional-files/images/diagram0401e.png"
-       style="width:280px;" alt="Diagram 4.1e"
-       title="Diagram 4.1e">
+<img src="../additional-files/images/diagram0401e.png"
+     style="width:280px;" alt="Diagram 4.1e"
+     title="Diagram 4.1e">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 This program would be **unsafe** because it permits a
 condition where an attempt could be made to access
@@ -260,9 +265,10 @@ fn add_suffix(mut name: String) -> String {
 }
 ```
 
-<image src="../additional-files/images/diagram0401f.png"
-       style="width:480px;" alt="Diagram 4.1f"
-       title="Diagram 4.1f">
+<img src="../additional-files/images/diagram0401f.png"
+     style="width:480px;" alt="Diagram 4.1f"
+     title="Diagram 4.1f">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 1. At L1, "Ferris" is allocated on the heap and owned by
    ```first```

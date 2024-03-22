@@ -24,6 +24,98 @@ Note: An asterisk [```*```] can be used as the dereference operator
 
 ---
 
+### Move-Only APIs Are Inconvenient ###
+
+Although ownership, boxes, and moves provide great memory
+safety, a move-only API makes reuse of a variable inconvenient.
+
+Consider this example:
+
+```rust
+// Note: This code will not compile
+fn main() {
+    let m1 = String::from("Hello");
+    let m2 = String::from("world");
+    greet(m1, m2); // [L2]
+    let s = format!("{} {}!", m1, m2); // [L3] Error!
+}
+
+fn greet(g1: String, g2: String) {
+    println!("{g1}, {g2}!"); // [L1]
+}
+```
+
+<img src="../additional-files/images/diagram0402a.png"
+     style="width:480px;" alt="Diagram 4.2a"
+     title="Diagram 4.2a">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+Because we've moved ```m1``` and ```m2```, by our movement
+rules, we can no longer access them.
+
+---
+
+We could make the function *return* the values like this:
+
+```rust
+fn main() {
+    let m1 = String::from("Hello");
+    let m2 = String::from("world"); // [L1]
+    let (m1_again, m2_again) = greet(m1, m2);
+    let s = format!("{} {}!", m1_again, m2_again); // [L2]
+}
+
+fn greet(g1: String, g2: String) -> (String, String) {
+    println!("{g1}, {g2}!");
+    (g1, g2)
+}
+```
+
+<img src="../additional-files/images/diagram0402b.png"
+     style="width:480px;" alt="Diagram 4.2b"
+     title="Diagram 4.2b">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+Now, this works, but we're doing a lot of unnecessary moving
+around of our data, especially sing the ```greet()```
+function only reads them.
+
+---
+
+### References Are Non-Owning Pointers ###
+
+Rust allows us to use *references*, which are pointers that do
+not transfer ownership.
+
+```rust
+fn main() {
+    let m1 = String::from("Hello");
+    let m2 = String::from("world"); // [L1]
+    // Note the ampersands - we're passing references
+    greet(&m1, &m2); // [L3]
+    let s = format!("{} {}!", m1, m2); // [L2]
+}
+
+// Note the ampersands - we're receiving references
+fn greet(g1: &String, g2: &String) {
+    println!("{g1}, {g2}!");
+}
+```
+
+<img src="../additional-files/images/diagram0402c.png"
+     style="width:320px;" alt="Diagram 4.2c"
+     title="Diagram 4.2c">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+By using references, we're never moving ```m1``` and ```m2```
+at all. Instead, the ```greet()``` function receives pointers
+(references) and can use the data without owning it.
+
+In Rust terms, the function *borrows* the variables, but they
+remain valid (owned) in ```main()```'s stack frame.
+
+---
+
 ### Passing a Reference to a Function ###
 
 Rewriting the code where we returned multiple values as an ownership
@@ -74,6 +166,60 @@ The pointer ```ptr``` points to the memory location (on the heap) where the stri
 
 This "pointer to a pointer" concept (called *borrowing*) enables working
 with a value without taking ownership.
+
+---
+
+### Dereferencing a Pointer Accesses its Data ###
+
+We now understand the ampersand ```&``` as the reference
+operator. The asterisk ```*``` acts as the dereference
+operator.
+
+Consider the following:
+
+```rust
+let mut x: Box<i32> = Box::new(1);
+let a: i32 = *x; // *x reads the heap value, so a = 1
+*x += 1; // *x modifies the heap value, so x points to 2
+
+let r1: &Box<i32> = &x; // r1 points to x on the stack
+let b: i32 = **r1; // **r1 reads the heap value, so b = 2
+
+let r2: &i32 = &*x; // r2 points to the heap value
+let c: i32 = *r2; // [L1] *r2 reads the heap value, so c = 2
+
+println!("{} {} {}", a, b, c); // -> 1 2 2
+```
+
+<img src="../additional-files/images/diagram0402d.png"
+     style="width:140px;" alt="Diagram 4.2d"
+     title="Diagram 4.2d">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+---
+
+### Implicit Dereferencing ###
+
+Rust is usually able to dereference implicitly, based on the
+context in which a reference is accessed, so it's usually
+not necessary to use the dereference operator.
+
+```rust
+let x: Box<i32> = Box::new(-1);
+let x_abs1 = i32::abs(*x);  // explicit dereference
+let x_abs2 = x.abs();       // implicit dereference
+assert_eq!(x_abs1, x_abs2);
+
+let r: &Box<i32> = &x;
+let r_abs1 = i32::abs(**r); // explicit dereference (x2)
+let r_abs2 = r.abs();       // implicit dereference (x2)
+assert_eq!(r_abs1, r_abs2);
+
+let s = String::from("Hello");
+let s_len1 = str::len(&s);  // explicit dereference
+let s_len2 = s.len();       // implicit dereference
+assert_eq!(s_len1, s_len2);
+```
 
 ---
 
@@ -186,6 +332,12 @@ println!("{ref3}");
 
 ---
 
+### Rust Avoids Simultaneous Aliasing and Mutation ###
+
+
+
+---
+
 ### Dangling References ###
 
 In many languages with pointers, it is possible to create a reference to a 
@@ -218,3 +370,6 @@ fm dangle() -> &String {
     * One mutable reference<br>or
     * Any number of immutable references
 * References must always be valid
+
+---
+

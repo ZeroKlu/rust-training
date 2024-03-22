@@ -38,9 +38,10 @@ fn add_suffix(mut name: String) -> String {
 }
 ```
 
-<image src="../additional-files/images/diagram0401h.png"
-       style="width:280px;" alt="Diagram 4.1h"
-       title="Diagram 4.1h">
+<img src="../additional-files/images/diagram0401h.png"
+     style="width:280px;" alt="Diagram 4.1h"
+     title="Diagram 4.1h">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 Here, we have still moved a variable, but the moved (therefore
 inaccessible) variable is ```first_clone```, so we can still
