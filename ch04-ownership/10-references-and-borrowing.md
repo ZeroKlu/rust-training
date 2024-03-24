@@ -334,7 +334,73 @@ println!("{ref3}");
 
 ### Rust Avoids Simultaneous Aliasing and Mutation ###
 
+Aliasing (accessing the same data via multiple variables) is
+enabled through the use of pointers in Rust.
 
+This could become a problem if we were permitted to mutate
+the data in multiple locations.
+
+Risks:
+
+* One variable deallocates the memory
+* One variable mutates the aliased data
+
+Consider this code:
+
+```rust
+let mut v: Vec<i32> = vec![1, 2, 3]; // [L1]
+v.push(4); // [L2]
+```
+
+<img src="../additional-files/images/diagram0402e.png"
+     style="width:300px;" alt="Diagram 4.2e"
+     title="Diagram 4.2e">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+The vector stores both its size and its capacity.
+
+<img src="../additional-files/images/diagram0402f.png"
+     style="width:260px;" alt="Diagram 4.2f"
+     title="Diagram 4.2f">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+So, after the ```push()```, it has to:
+
+* Allocate a larger space
+* Copy all of the data to the new space
+* Deallocate the old memory
+* Update the pointer on the stack
+
+---
+
+So, if we create an alias to the element and then modify the
+vector, we would have a problem.
+
+```rust
+// Note: This code will not compile
+let mut v: Vec<i32> = vec![1, 2, 3];
+let num : &i32 = &v[3]; // [L1]
+v.push(4); // [L2]
+println!("The third element is {}", *num); // [L3] Error
+```
+
+<img src="../additional-files/images/diagram0402g.png"
+     style="width:320px;" alt="Diagram 4.2g"
+     title="Diagram 4.2g">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+Because at L2, the original vector memory is deallocated
+in order to resize, the alias pointing to one of its elements
+would be pointing to deallocated memory.
+
+With ```num``` aliasing and ```v.push``` mutating the same 
+space, we would have an unsafe memory state.
+
+---
+
+### Pointer Safety Principle ###
+
+Data should never be aliased and mutated at the same time.
 
 ---
 
