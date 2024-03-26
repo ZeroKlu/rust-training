@@ -574,3 +574,16 @@ fn main() {
 ```
 
 ---
+
+### Debugging Ownership Rule ###
+
+Question: Is the code unsafe?
+
+* If yes:
+    1. Understand the root cause
+    2. Modify the code to make it safe
+* If no:
+    1. Understand the limitations of the borrow checker
+    2. Modify the code to work around limitations
+
+---

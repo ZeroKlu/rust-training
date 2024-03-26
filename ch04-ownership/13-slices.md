@@ -12,11 +12,11 @@ first word in a string:
 fn main() {
     let s = String::from("hello world");
 
-    let word_len = first_word_length(&s);
-    println!("The first word of 's' is {word_len} characters long.");
+    let word = first_word(&s);
+    println!("The first word of 's' is {word} characters long.");
 }
 
-fn first_word_length(s: &String) -> usize {
+fn first_word(s: &String) -> usize {
     let bytes = s.as_bytes();
 
     // iter() returns each element in a collection
@@ -42,27 +42,32 @@ result in invalid output.
 fn main() {
     let s = String::from("hello world");
 
-    let word_len = first_word_length(&s);
+    let word = first_word(&s); // [L1]
 
-    s.clear();
+    s.clear(); // [L2]
 
-    // This is incorrect, since word_len is still 5, but s is 0 characters
-    println!("The first word of 's' is {word_len} characters long.");
+    // This is incorrect, since word is still 5, but s is 0 characters
+    println!("The first word of 's' is {word} characters long.");
 }
 
-fn first_word_length(s: &String) -> usize {
+fn first_word(s: &String) -> usize {
     // * SNIP *
 }
 ```
 
-If we tried to use ```word_len``` to obtain the word from ```s```, it would 
+<img src="../additional-files/images/diagram0404a.png"
+     style="width:400px;" alt="Diagram 4.4a"
+     title="Diagram 4.4a">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+If we tried to use ```word``` to obtain the word from ```s```, it would 
 fail. The data is out of sync.
 
 Things could get even worse if we tried to use the index to get the second
 word, like this:
 
 ```rust
-fn next_word_length(s: &String, start: usize) -> usize {
+fn second_word(s: &String, start: usize) -> usize {
     // * SNIP *
 }
 ```
@@ -83,8 +88,13 @@ let s = String::from("hello world");
 // The slice is indicated as a range (with indices from start to end + 1)
 let hello = &s[0..5];
 let world = &s[6..11];
-let hello_world = &s[0..len];
+let s2: &String = &s; // [L1]
 ```
+
+<img src="../additional-files/images/diagram0404b.png"
+     style="width:240px;" alt="Diagram 4.4b"
+     title="Diagram 4.4b">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
 
 You can omit the first, last, or both indices from the range notation when
 creating a slice to indicate that the slice continues to the omitted end.
@@ -101,6 +111,18 @@ Note: Slices must begin and end at valid UTF-8 character boundaries.
 Beginning a slice in the middle of a multi-byte character will cause an
 error.
 
+---
+
+Slices are special kinds of references, because they are
+"fat" pointers (pointers with metadata).
+
+<img src="../additional-files/images/diagram0404c.png"
+     style="width:400px;" alt="Diagram 4.4c"
+     title="Diagram 4.4c">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+---
+
 Now, we can modify our first_word function to return a value for the first
 word.
 
@@ -114,14 +136,33 @@ fn first_word(s: &String) -> &str {
             return &s[0..i];
         }
     }
-    &s[..]
     // If no spaces were found, return a slice containing the whole string
+    &s[..]
 }
 ```
 
 ---
 
 ### Slices are References ###
+
+Because slices are references, they change permissions on
+the referenced data.
+
+```rust
+fn main() {
+    let mut s = String::from("hello");
+    let hello: &str = &s[0..5];
+    println!("{hello}");
+    s.push_str(" world");
+}
+```
+
+<img src="../additional-files/images/diagram0404d.png"
+     style="width:420px;" alt="Diagram 4.4d"
+     title="Diagram 4.4d">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+---
 
 The compiler understands that a slice is an immutable reference. Because of
 that, it prevents modifying the string.
@@ -170,11 +211,24 @@ first_word function.
 
 ```rust
 fn main() {
-    let mut s = String::from("hello world");
+    let my_string = String::from("hello world");
 
     // Either of these will now work
-    let word = first_word(&s);
-    let word = first_word(&s[..]);
+    let word = first_word(&my_string[0..6]);
+    let word = first_word(&my_string[..]);
+
+    // Since a String reference is equivalent to a slice,
+    //     this works too
+    let word = first_word(&my_string);
+
+    let my_literal = "hello world";
+
+    // This also works with literals
+    let word = first_word(&my_literal[0..6]);
+    let word = first_word(&my_literal[..]);
+
+    // And, since a literal *is* a slice, this works too
+    let word = first_word(my_literal);
 }
 
 // Because of 'deref coercions' (later lesson),
