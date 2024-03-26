@@ -15,7 +15,8 @@
 Note: The textbook is also available free online:
 [doc.rust-lang.org/book](https://doc.rust-lang.org/book)
 
-Brown University also has a version with quizzes:
+Brown University also has a version with quizzes
+and additional notes/diagrams:
 [rust-book.cs.brown.edu](https://rust-book.cs.brown.edu)<br>
 Diagrams in the markdown notes are all from this site
 
