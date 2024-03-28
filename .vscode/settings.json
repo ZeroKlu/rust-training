@@ -9,6 +9,7 @@
         "isize",
         "Klabnik",
         "malloc",
+        "Memberless",
         "nums",
         "pwsh",
         "RAII",
@@ -23,6 +24,7 @@
     ],
     "cSpell.ignoreWords": [
         "anotheruser",
-        "someuser"
+        "someuser",
+        "someusername"
     ]
 }
