@@ -1,4 +1,4 @@
-## The Option Enum and Its Advantages Over Null Values ##
+## The ```Option``` Enum and Its Advantages Over Null Values ##
 
 Unlike many other languages, Rust does not include the *null* feature,
 which has frequently been viewed as unnecessary and a mistake.
@@ -35,6 +35,14 @@ could potentially contain nothing.
 * ```None```
 * ```Some(T)```
 
+```rust
+// Standard library definition of `Option`
+enum Option<T> {
+    None,
+    Some(T),
+}
+```
+
 Because of its usefulness, these two variants can be used without the
 ```Option::``` prefix.
 
@@ -44,13 +52,23 @@ Here are a couple examples of declaring an ```Option```:
 
 ```rust
 let some_num = Some(5);         // Option<i32>
-let come_char = Some('a');      // Option<char>
+let come_char = Some('e');      // Option<char>
 
 // We have to specify this data type, because 'None' doesn't imply one
-let no_num: Option<i32> = None; // Option<i32>
+let absent_number: Option<i32> = None; // [L1]
 ```
 
-Note:
+<img src="../additional-files/images/diagram0601d.png"
+     style="width:180px;" alt="Diagram 6.1d"
+     title="Diagram 6.1d">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+When we have a ```Some``` value, data is present and is held
+within the ```Some```.
+
+When we have a ```None``` value, no data is present.
+
+Note (Advantage):
 * The compiler will not allow us to automatically use an ```Option<T>``` 
   as a valid value. It must first be converted to the type matching
   ```T```.

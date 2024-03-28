@@ -21,6 +21,30 @@ fn main() {
 }
 ```
 
+<img src="../additional-files/images/diagram0601c.png"
+     style="width:240px;" alt="Diagram 6.1c"
+     title="Diagram 6.1c">
+<br><sup><sup>[Diagram from Brown University](https://rust-book.cs.brown.edu)</sup></sup>
+
+---
+
+We could reverse the idea and place structs in the enum
+
+```rust
+struct Ipv4Addr {
+    // --snip--
+}
+
+struct Ipv6Addr {
+    // --snip--
+}
+
+enum IpAddr {
+    V4(Ipv4Addr),
+    V6(Ipv6Addr),
+}
+```
+
 ---
 
 Data types can include other enums or structs as well.
