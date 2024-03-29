@@ -1,16 +1,16 @@
 ## Quiz - Chapter 1.2 ##
 
 > ---
-> **Question 1**
+> **Question 1**<br>
 > Every executable Rust program must contain a function with 
 > the name:
 >
 >> Response<br>
 >> [ ```main``` ]
+> 
 > ---
-
-> ---
-> **Question 2**
+> 
+> **Question 2**<br>
 > Let's say you have the following program in a file
 > ```hello.rs```:
 >

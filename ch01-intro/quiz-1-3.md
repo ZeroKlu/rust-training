@@ -1,7 +1,7 @@
 ## Quiz - Chapter 1.3 ##
 
 > ---
-> **Question 1**
+> **Question 1**<br>
 > Say you just downloaded a Cargo project, and then you run 
 > ```cargo run``` at the command-line. Which statement is NOT 
 > true about what happens next?
