@@ -20,6 +20,7 @@
         "Rustup",
         "struct",
         "Structs",
+        "uncopyable",
         "unshadowed",
         "usize",
         "winget"
@@ -28,6 +29,7 @@
         "anotheruser",
         "fsize",
         "someuser",
-        "someusername"
+        "someusername",
+        "strs"
     ]
 }

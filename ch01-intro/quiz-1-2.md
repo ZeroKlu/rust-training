@@ -25,13 +25,13 @@
 > next?
 >
 > > Response<br>
-> > ( ) ```rustc``` executes the program and prints out
+> > ⊚ ```rustc``` executes the program and prints out
 > > ```Hello world!```<br>
-> > ( ) ```rustc``` will print an error because this is an 
+> > ⊚ ```rustc``` will print an error because this is an 
 > > invalid program<br>
-> > (•) ```rustc``` generates a binary executable named 
+> > ⦿ ```rustc``` generates a binary executable named 
 > > ```hello```<br>
-> > ( ) ```rustc``` reformats ```hello.rs``` according to the 
+> > ⊚ ```rustc``` reformats ```hello.rs``` according to the 
 > > Rust style guide
 > ---
 

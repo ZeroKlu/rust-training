@@ -7,11 +7,11 @@
 > true about what happens next?
 >
 >> Response<br>
-> > ( ) Cargo downloads and builds any dependencies of the project<br>
-> > ( ) Cargo builds the project into a binary in the 
+> > ⊚ Cargo downloads and builds any dependencies of the project<br>
+> > ⊚ Cargo builds the project into a binary in the 
 > > ```target/debug``` directory<br>
-> > ( ) Cargo executes the project's binary<br>
-> > (•) Cargo watches for file changes and re-executes the 
+> > ⊚ Cargo executes the project's binary<br>
+> > ⦿ Cargo watches for file changes and re-executes the 
 > > binary on a change
 > ---
 

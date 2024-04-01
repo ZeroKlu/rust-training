@@ -5,10 +5,10 @@
 > The largest number representable by the type ```i128``` is:
 >
 > > Response<br>
-> > ( ) 2<sup>128</sup><br>
-> > ( ) 2<sup>128</sup> - 1<br>
-> > ( ) 2<sup>127</sup><br>
-> > (•) 2<sup>127</sup> - 1<br>
+> > ⊚ 2<sup>128</sup><br>
+> > ⊚ 2<sup>128</sup> - 1<br>
+> > ⊚ 2<sup>127</sup><br>
+> > ⦿ 2<sup>127</sup> - 1<br>
 > 
 > ---
 > 
@@ -16,9 +16,9 @@
 > If x : u8 = 0, what will happen when computing x - 1?
 >
 > > Response<br>
-> > ( ) It will always panic.<br>
-> > ( ) It will always return 255.<br>
-> > (•) It depends on the compiler mode.<br>
+> > ⊚ It will always panic.<br>
+> > ⊚ It will always return 255.<br>
+> > ⦿ It depends on the compiler mode.<br>
 > 
 > ---
 > 
@@ -36,8 +36,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > ( ) DOES compile<br>
-> > (•) Does NOT compile<br>
+> > ⊚ DOES compile<br>
+> > ⦿ Does NOT compile<br>
 > 
 > ---
 

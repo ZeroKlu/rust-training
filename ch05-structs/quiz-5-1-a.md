@@ -56,4 +56,5 @@
 > 
 > ---
 
-![image](../additional-files/images/quiz_0305b.png)
+![image](../additional-files/images/quiz_0501_1.png)
+![image](../additional-files/images/quiz_0501_2.png)

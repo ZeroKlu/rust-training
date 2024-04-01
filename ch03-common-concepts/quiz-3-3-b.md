@@ -8,10 +8,10 @@
 > 3. A syntactic scope
 > 
 > > Response<br>
-> > ( ) 2 and 3<br>
-> > (•) 1 and 3<br>
-> > ( ) 2 only<br>
-> > ( ) 1 only<br>
+> > ⊚ 2 and 3<br>
+> > ⦿ 1 and 3<br>
+> > ⊚ 2 only<br>
+> > ⊚ 1 only<br>
 > 
 > ---
 >
@@ -33,8 +33,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > (•) DOES compile<br>
-> > ( ) Does NOT compile<br>
+> > ⦿ DOES compile<br>
+> > ⊚ Does NOT compile<br>
 > >
 > > The output of this program will be:<br>
 > > [ ```3``` ]

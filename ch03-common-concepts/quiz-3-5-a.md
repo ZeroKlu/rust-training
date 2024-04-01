@@ -26,8 +26,8 @@
 > (Note: both of these snippets compile!)
 > 
 > > Response<br>
-> > (•) True<br>
-> > ( ) False<br>
+> > ⦿ True<br>
+> > ⊚ False<br>
 > 
 > ---
 >
@@ -46,8 +46,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > ( ) DOES compile<br>
-> > (•) Does NOT compile<br>
+> > ⊚ DOES compile<br>
+> > ⦿ Does NOT compile<br>
 > 
 > ---
 

@@ -7,13 +7,13 @@
 > declare a variable?
 >
 > > Response<br>
-> > ( ) A ```const``` can only be assigned to a literal, not 
+> > ⊚ A ```const``` can only be assigned to a literal, not 
 > > an expression involving computation<br>
-> > ( ) They are just different syntaxes for declaring 
+> > ⊚ They are just different syntaxes for declaring 
 > > variables with the same semantics<br>
-> > ( ) The compiler will error if a ```const``` variable's 
+> > ⊚ The compiler will error if a ```const``` variable's 
 > > name is not using UPPER_SNAKE_CASE<br>
-> > (•) ```const``` can be used in the global scope, and 
+> > ⦿ ```const``` can be used in the global scope, and 
 > > ```let``` can only be used in a function<br>
 > 
 > ---
@@ -33,8 +33,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > (•) DOES compile<br>
-> > ( ) Does NOT compile<br>
+> > ⦿ DOES compile<br>
+> > ⊚ Does NOT compile<br>
 > >
 > > The output of this program will be:<br>
 > > [ ```2``` ]
