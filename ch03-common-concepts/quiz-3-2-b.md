@@ -16,8 +16,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > ⊚ DOES compile<br>
-> > ⦿ Does NOT compile<br>
+> > ○ DOES compile<br>
+> > ◉ Does NOT compile<br>
 > 
 > ---
 >
@@ -36,8 +36,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > ⦿ DOES compile<br>
-> > ⊚ Does NOT compile<br>
+> > ◉ DOES compile<br>
+> > ○ Does NOT compile<br>
 > >
 > > The output of this program will be:<br>
 > > [ ```4``` ]

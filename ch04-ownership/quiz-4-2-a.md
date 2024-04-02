@@ -46,12 +46,12 @@
 > deallocated after calling ```get_first```?
 >
 > > Response<br>
-> > ⊚ ```vr``` is not mutated within ```get_first```<br>
-> > ⦿ ```vr``` is a reference, which does not own the vector
+> > ○ ```vr``` is not mutated within ```get_first```<br>
+> > ◉ ```vr``` is a reference, which does not own the vector
 > > it points to<br>
-> > ⊚ ```vr``` is used after calling ```get_first``` in the
+> > ○ ```vr``` is used after calling ```get_first``` in the
 > > ```println```<br>
-> > ⊚ ```get_first``` returns a value of type ```i32```, 
+> > ○ ```get_first``` returns a value of type ```i32```, 
 > > not the vector itself<br>
 > 
 > ---

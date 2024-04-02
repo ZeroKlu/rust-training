@@ -26,8 +26,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > ⊚ DOES compile<br>
-> > ⦿ Does NOT compile<br>
+> > ○ DOES compile<br>
+> > ◉ Does NOT compile<br>
 > 
 > ---
 

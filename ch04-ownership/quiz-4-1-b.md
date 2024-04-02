@@ -5,10 +5,10 @@
 > Which of the following is NOT a kind of undefined behavior?
 > 
 > > Response<br>
-> > ⊚ Using a non-boolean value as an if condition<br>
-> > ⊚ Freeing the same memory a second time<br>
-> > ⦿ Having a pointer to freed memory in a stack frame<br>
-> > ⊚ Using a pointer that points to freed memory<br>
+> > ○ Using a non-boolean value as an if condition<br>
+> > ○ Freeing the same memory a second time<br>
+> > ◉ Having a pointer to freed memory in a stack frame<br>
+> > ○ Using a pointer that points to freed memory<br>
 > 
 > ---
 >
@@ -32,8 +32,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > ⦿ DOES compile<br>
-> > ⊚ Does NOT compile<br>
+> > ◉ DOES compile<br>
+> > ○ Does NOT compile<br>
 > >
 > > The output of this program will be:<br>
 > > [ ```hello world``` ]
@@ -59,8 +59,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > ⊚ DOES compile<br>
-> > ⦿ Does NOT compile<br>
+> > ○ DOES compile<br>
+> > ◉ Does NOT compile<br>
 > 
 > ---
 >

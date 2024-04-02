@@ -6,12 +6,12 @@
 > variable ```x``` is immutable?
 >
 >> Response<br>
-> > ⊚ ```x``` is stored in the immutable region of memory.
+> > ○ ```x``` is stored in the immutable region of memory.
 > > <br>
-> > ⊚ After being defined, ```x``` can be changed at most 
+> > ○ After being defined, ```x``` can be changed at most 
 > > once.<br>
-> > ⊚ You cannot create a reference to ```x```.<br>
-> > ⦿ ```x``` cannot be changed after being assigned a 
+> > ○ You cannot create a reference to ```x```.<br>
+> > ◉ ```x``` cannot be changed after being assigned a 
 > > value.
 > 
 > ---
@@ -41,8 +41,8 @@
 >
 > > Response<br>
 > > This program:<br>
-> > ⊚ DOES compile<br>
-> > ⦿ Does NOT compile<br>
+> > ○ DOES compile<br>
+> > ◉ Does NOT compile<br>
 > 
 > ---
 

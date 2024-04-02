@@ -6,13 +6,13 @@
 > between the stack and the heap?
 > 
 > > Response<br>
-> > ⊚ The stack holds immutable data, while the heap holds 
+> > ○ The stack holds immutable data, while the heap holds 
 > > mutable data.<br>
-> > ⊚ The stack can hold pointers to data stored on the 
+> > ○ The stack can hold pointers to data stored on the 
 > > heap, while the heap only holds data without pointers<br>
-> > ⊚ The stack holds copyable data, while the heap holds 
+> > ○ The stack holds copyable data, while the heap holds 
 > > uncopyable data.<br>
-> > ⦿ The stack holds data associated with a specific 
+> > ◉ The stack holds data associated with a specific 
 > > function, while the heap holds data that can outlive a 
 > > function.<br>
 > 

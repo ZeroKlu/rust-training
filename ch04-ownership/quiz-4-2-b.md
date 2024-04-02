@@ -52,16 +52,16 @@
 > and regains write permissions?
 >
 > > Response<br>
-> > ⦿ ```get_first``` returns an immutable reference to 
+> > ◉ ```get_first``` returns an immutable reference to 
 > > data within ```strs```, so ```strs``` is not writable
 > > while ```first``` is live<br>
-> > ⊚ ```strs``` is not writable while the immutable 
+> > ○ ```strs``` is not writable while the immutable 
 > > reference ```&strs``` passed to ```get_first``` is 
 > > live<br>
-> > ⊚ Because ```first``` refers to ``strs``, then ``strs`` 
+> > ○ Because ```first``` refers to ``strs``, then ``strs`` 
 > > can only be mutated within a nested scope like the 
 > > if-statement<br>
-> > ⊚ ```strs``` does not need write permissions until the 
+> > ○ ```strs``` does not need write permissions until the 
 > > ```strs.push(..)``` operation, so it only regains write 
 > > permissions at that statement<br>
 > 
@@ -83,12 +83,12 @@
 > undefined behavior occurs in this program?
 >
 > > Response<br>
-> > ⊚ ```v2``` owns the vector data on the heap, while 
+> > ○ ```v2``` owns the vector data on the heap, while 
 > > ```v1``` does not<br>
-> > ⊚ ```v1``` has its pointer invalidated by the push on 
+> > ○ ```v1``` has its pointer invalidated by the push on 
 > > line 3<br>
-> > ⊚ ```v1``` has been moved into ```v2``` on line 2<br>
-> > ⊚ ```v1[0]``` reads ```v1```, which points to 
+> > ○ ```v1``` has been moved into ```v2``` on line 2<br>
+> > ○ ```v1[0]``` reads ```v1```, which points to 
 > > deallocated memory<br>
 > 
 > ---
