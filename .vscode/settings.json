@@ -14,6 +14,7 @@
         "nums",
         "pwsh",
         "RAII",
+        "reborrowed",
         "reborrowing",
         "Rustacean",
         "rustc",
@@ -24,10 +25,12 @@
         "uncopyable",
         "unshadowed",
         "usize",
+        "waitlist",
         "winget"
     ],
     "cSpell.ignoreWords": [
         "anotheruser",
+        "decr",
         "fsize",
         "someuser",
         "someusername",

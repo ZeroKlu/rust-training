@@ -66,14 +66,14 @@ rules. The crate's directory, also named ```backyard```, contains these files
 and directories:
 
 ```
-/backyard
+backyard
 ├── Cargo.lock
 ├── Cargo.toml
-└── /src
-:   ├── /garden
-:   |   └── vegetables.rs
-:   ├── garden.rs
-:   └── main.rs
+└── src
+    ├── garden
+    │   └── vegetables.rs
+    ├── garden.rs
+    └── main.rs
 ```
 
 The crate root file in this case is *src/main.rs*, and it contains:
