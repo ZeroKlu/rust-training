@@ -1,4 +1,4 @@
-## Quiz - Chapter 7.3 a ##
+## Quiz - Chapter 7.3 b ##
 
 > ---
 > **Question 1**<br>
@@ -27,8 +27,9 @@
 > }
 > ```
 >
-> > Response<br>
-> > This program:
+> > Response
+> > 
+> > This program:<br>
 > > ◉ DOES compile<br>
 > > ○ does NOT compile<br>
 > > 
@@ -56,8 +57,9 @@
 > }
 >```
 >
-> > Response<br>
-> > This program:
+> > Response
+> > 
+> > This program:<br>
 > > ○ DOES compile<br>
 > > ◉ does NOT compile<br>
 > > 
