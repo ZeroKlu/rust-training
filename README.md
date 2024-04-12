@@ -21,6 +21,20 @@ and additional notes/diagrams:
 Diagrams in the markdown notes are all from this site
 
 ---
+
+### Additional References ###
+
+* [The Rust Reference](https://doc.rust-lang.org/reference)
+    * A reference guide to common Rust programming elements
+* [The Rustonomicon](https://doc.rust-lang.org/nomicon)
+    * Note: This is a guide to unsafe programming in Rust
+    * Do not start using this until you're comfortable with
+      both Rust and systems programming.
+* [Rust By Example](https://doc.rust-lang.org/rust-by-example)
+    * Programming examples in Rust
+
+---
+
 ### What is this repository for? ###
 
 * Basic training on Rust Programming Language fundamentals
