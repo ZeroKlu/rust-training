@@ -278,4 +278,3 @@ out of scope, as annotated below:
 ```
 
 ---
-

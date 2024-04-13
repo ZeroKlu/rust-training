@@ -65,7 +65,8 @@
 > > This program:<br>
 > > ○ DOES compile<br>
 > > ◉ Does NOT compile<br>
-> 
+> > 
+> ---
 
 ![image](../additional-files/images/quiz_0801a_1.png)
 ![image](../additional-files/images/quiz_0801a_2.png)
