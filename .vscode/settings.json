@@ -6,6 +6,7 @@
         "deallocates",
         "deallocating",
         "Deallocation",
+        "granularities",
         "Hoare",
         "isize",
         "Klabnik",
@@ -29,11 +30,18 @@
         "winget"
     ],
     "cSpell.ignoreWords": [
+        "Dobrý",
+        "Hola",
         "anotheruser",
         "decr",
         "fsize",
         "someuser",
         "someusername",
-        "strs"
+        "strs",
+        "Здравствуйте",
+        "לוֹם",
+        "السلام",
+        "عليكم",
+        "नमस्ते"
     ]
 }
