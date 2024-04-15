@@ -5,7 +5,8 @@ use std::collections::HashMap;
 
 fn get_median(v: &mut Vec<i32>) -> i32 {
     v.sort();
-    v[v.len() / 2]
+    let mid: usize = v.len() / 2;
+    if v.len() % 2 == 1 {v[mid]} else {(v[mid] + v[mid-1]) / 2}
 }
 
 fn get_mode(v: &mut Vec<i32>) -> i32 {
