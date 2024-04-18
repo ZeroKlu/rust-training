@@ -4,7 +4,7 @@
 > **Question 1**<br>
 > Given an arbitrary expression ```e``` of type 
 > ```Result<T, E>```, which code snippet best represents how 
-> ```e```? is translated?
+> ```e?``` is translated?
 >
 > > Response<br>
 > > ○
