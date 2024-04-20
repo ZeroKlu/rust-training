@@ -27,6 +27,7 @@
         "Rustup",
         "struct",
         "Structs",
+        "summarizable",
         "uncopyable",
         "unshadowed",
         "usize",
@@ -36,6 +37,7 @@
     "cSpell.ignoreWords": [
         "Dobrý",
         "Hola",
+        "Iceburgh",
         "anotheruser",
         "decr",
         "fsize",

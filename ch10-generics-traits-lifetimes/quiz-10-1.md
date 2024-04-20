@@ -1,6 +1,5 @@
 ## Quiz - Chapter 10.1 ##
 
-> ---
 > **Question 1**<br>
 > Imagine using a third-party function whose implementation 
 > you don't know, but whose type signature is this:
