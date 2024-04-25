@@ -260,5 +260,242 @@ error[E0597]: `string2` does not live long enough
 
 ### Thinking in Terms of Lifetimes ###
 
+What lifetimes are necessary is dictated by what your function
+is doing.
+
+for example, if the ```longest``` function only returned the
+first parameter ```x``` then ```y``` would not require a
+lifetime specification.
+
+```rust
+fn longest<'a>(x: &'a str, y: &str) -> &'a str {
+    x
+}
+```
+
+---
+
+When returning a reference from a function, the lifetime 
+parameter for the return type needs to match the lifetime 
+parameter for one of the parameters. If the reference 
+returned does not refer to one of the parameters, it must 
+refer to a value created within this function. However, this 
+would be a dangling reference because the value will go out 
+of scope at the end of the function.
+
+```rust
+// Note: This code will not compile
+fn longest<'a>(x: &str, y: &str) -> &'a str {
+    let result = String::from("really long string");
+    result.as_str() // Returns dangling reference
+}
+```
+
+```
+error[E0515]: cannot return reference to local variable `result`
+  --> src/main.rs:11:5
+   |
+11 |     result.as_str()
+   |     ^^^^^^^^^^^^^^^ returns a reference to data owned by the current function
+```
+
+---
+
+### Lifetime Annotations in Struct Definitions ###
+
+We can define structs to hold references, but in that case we 
+would need to add a lifetime annotation on every reference in 
+the struct’s definition.
+
+```rust
+struct ImportantExcerpt<'a> {
+    part: &'a str,
+}
+
+fn main() {
+    let novel = String::from("Call me Ishmael. Some years ago...");
+    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
+    let i = ImportantExcerpt {
+        part: first_sentence,
+    };
+}
+```
+
+---
+
+### Lifetime Elision ###
+
+This function compiled without lifetime annotations, even
+though it returns a reference.
+
+```rust
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
+}
+```
+
+In early Rust versions, this would not have compiled
+without lifetime annotations like the below:
+
+```rust
+fn first_word<'a>(s: &'a str) -> &'a str {
+    // ...
+}
+```
+
+Because this pattern (and some others) are predictable and
+deterministic, they were added to Rust as *lifetime elision
+rules*, allowing the borrow checker to infer the lifetimes.
+
+---
+
+There are three rules used to infer lifetimes when not
+specified:
+
+1. The compiler assigns a different lifetime parameter to 
+   each lifetime in each input type. For example:
+    * ```fn foo(x: &i32)``` gains one lifetime parameter
+      and becomes ```fn foo<'a>(x: &'a i32)```
+    * ```fn foo(x: &i32, y: &i32)``` gains two lifetime
+      parameters and becomes
+      ```foo<'a, 'b>(x: &'a i32, y: &'b i32)```
+    * fn ```foo(x: &ImportantExcerpt)``` gains two lifetime
+      parameters and becomes
+      ```fn foo<'a, 'b>(x: &'a ImportantExcerpt<'b>)```
+2. If there is exactly one input lifetime parameter, that 
+   lifetime is assigned to all output lifetime parameters.
+    * ```fn foo<'a>(x: &'a i32) -> &'a i32```
+3. If there are multiple input lifetime parameters, but one 
+   of them is ```&self``` or ```&mut self``` because this is 
+   a method, the lifetime of ```self``` is assigned to all 
+   output lifetime  parameters.
+
+---
+
+So, for the function above, the compiler does the following:
+
+We start with no lifetimes specified
+
+```rust
+fn first_word(s: &str) -> &str { ... }
+```
+
+Rule 1 is applied (each parameter gets its own lifetime)
+
+```rust
+fn first_word<'a'>(s: &'a str) -> &str { ... }
+```
+
+Rule 2 is applied because there is only one lifetime
+
+```rust
+fn first_word(s: &str) -> &'a str { ... }
+```
+
+All requirements are met, and the compiler can proceed 
+without explicit lifetime specifiers.
+
+---
+
+For the ```longest``` function, if we omit the lifetime
+specifiers, the compiler tries to implement the same rules.
+
+Start with no lifetimes
 
 
+```rust
+fn longest(x: &str, y: &str) -> &str { ... }
+```
+
+Apply rule 1
+
+
+```rust
+fn longest<'a, 'b>(x: &'a str, y: &'b str) -> &str { ... }
+```
+
+Rule 2 cannot apply, because there is more than one input
+lifetime.
+
+Rule 3 cannot apply, because this is a function, not a
+method, so none of the input parameters are ```self```
+
+Because neither applied, the compiler cannot infer the
+output lifetime, so we get an error.
+
+---
+
+### Lifetime Annotations in Method Definitions ###
+
+For struct methods lifetime references are added to the
+```impl``` block as well as any methods that require them.
+
+```rust
+impl<'a> ImportantExcerpt<'a> {
+    // No lifetime needed on this method
+    fn level(&self) -> i32 {
+        3
+    }
+
+    // This method is covered by elision rule 3
+    fn announce_and_return_part(&self, announcement: &str) -> &str {
+        println!("Attention please: {}", announcement);
+        self.part
+    }
+}
+```
+
+---
+
+### The Static Lifetime ###
+
+The ```'static``` lifetime indicates that the affected
+reference can live for the duration of the program.
+
+Note: All string literals have the ```'static``` lifetime.
+
+```rust
+let s: &'static str = "I have a static lifetime.";
+```
+
+Be careful when reacting to an error message that suggests
+using ```'static```, as this often results from a dangling
+reference or mismatched lifetimes and may not require using
+```'static```
+
+---
+
+### Generic Type Parameters, Trait Bounds, and Lifetimes Together ###
+
+Here is an example of using generic types, traits, and
+lifetimes in a single function.
+
+```rust
+use std::fmt::Display;
+
+fn longest_with_an_announcement<'a, T>(
+    x: &'a str,
+    y: &'a str,
+    ann: T,
+) -> &'a str
+where
+    T: Display,
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+```
+
+---
