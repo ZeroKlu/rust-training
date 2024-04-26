@@ -15,6 +15,7 @@ fn main() {
         println!("Condition 'T' was true!")
     }
 
+    // In some languages, you can use non-booleans as conditions, but not in Rust
     // let n = 1;
     // This would result in an error, because n is an integer
     // if n {
@@ -26,7 +27,7 @@ fn main() {
 
     if age >= 65 {
         price = 15;
-    } else if age <= 5 {
+    } else if age <= 5 { // Can add any number of `else if` expressions
         price = 0;
     } else if age <= 18 {
         price = 10;
@@ -35,6 +36,7 @@ fn main() {
     println!("Admission: ${price}");
     
     let condition = false;
+    // Can use if as a ternary operation (like `? :` in other languages)
     let result = if condition {"Yes"} else {"No"};
     println!("Result: {result}");
 }

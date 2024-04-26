@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "operations"
+name = "types"
 version = "0.1.0"

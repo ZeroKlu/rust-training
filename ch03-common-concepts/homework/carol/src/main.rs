@@ -1,5 +1,6 @@
 fn main() {
-    for n in 1..13 {
+    // Range can be less-than `1..13` or up to `1..=12`
+    for n in 1..=12 {
         get_verse(n);
     }
 }
