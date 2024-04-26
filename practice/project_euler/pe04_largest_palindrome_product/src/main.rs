@@ -7,7 +7,7 @@ const MAX: i32 = 999;
 const MIN: i32 = 100;
 
 fn is_palindrome(word: String) -> bool {
-    let mut chars: Vec<char> = word.chars().collect();
+    let chars: Vec<char> = word.chars().collect();
     let mut i = 0;
     while i < chars.len() / 2 {
         if chars[i] != chars[chars.len() - 1 - i] {
@@ -20,8 +20,8 @@ fn is_palindrome(word: String) -> bool {
 
 fn main() {
     let mut prod = 0;
-    for p in (MIN..MAX).rev() {
-        for q in (MIN..MAX).rev() {
+    for p in (MIN..=MAX).rev() {
+        for q in (MIN..=MAX).rev() {
             let x = p * q;
             if x > prod && is_palindrome(x.to_string()) {
                 prod = x;

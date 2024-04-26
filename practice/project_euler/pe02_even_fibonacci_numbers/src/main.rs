@@ -6,6 +6,7 @@
 //   find the sum of the even-valued terms.
 
 use std::collections::HashMap;
+use thousands::Separable;
 
 const MAX_NUM: usize = 4_000_000;
 
@@ -44,7 +45,7 @@ fn main() {
         n += 1;
         f = fibonacci(n, &mut hash);
     }
-    println!("{}", sum);
+    println!("{}", sum.separate_with_commas());
 }
 
-// 4613732
+// 4,613,732
