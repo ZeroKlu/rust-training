@@ -2,6 +2,8 @@
 //
 // What is the largest prime factor of the number 600851475143
 
+use thousands::Separable;
+
 const N: u64 = 600_851_475_143;
 
 fn is_prime(n: u64) -> bool {
@@ -41,7 +43,7 @@ fn prime_factors(n: u64) -> Vec<u64> {
 
 fn main() {
     let f = prime_factors(N);
-    println!("{}", f.iter().max().unwrap());
+    println!("{}", f.iter().max().unwrap().separate_with_commas());
 }
 
-// 6857
+// 6,857

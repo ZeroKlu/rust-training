@@ -3,6 +3,8 @@
 //
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
+use thousands::Separable;
+
 const MAX_NUM: usize = 1000;
 
 fn sum_multiples(n: usize) -> usize {
@@ -16,7 +18,7 @@ fn sum_multiples(n: usize) -> usize {
 }
 
 fn main() {
-    println!("{}", sum_multiples(MAX_NUM));
+    println!("{}", sum_multiples(MAX_NUM).separate_with_commas());
 }
 
-// 233168
+// 233,168

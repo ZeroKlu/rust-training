@@ -3,7 +3,7 @@
 version = 3
 
 [[package]]
-name = "pe03_largest_prime_factor"
+name = "pe06_sum_of_squares"
 version = "0.1.0"
 dependencies = [
  "thousands",

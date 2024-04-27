@@ -3,6 +3,8 @@
 // 
 // Find the largest palindrome made from the product of two 3-digit numbers.
 
+use thousands::Separable;
+
 const MAX: i32 = 999;
 const MIN: i32 = 100;
 
@@ -28,7 +30,7 @@ fn main() {
             }
         }
     }
-    println!("{prod}");
+    println!("{}", prod.separate_with_commas());
 }
 
-// 906609
+// 906,609
