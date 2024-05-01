@@ -4,8 +4,11 @@ Verify Install:<br>
 ```cargo --version```
 
 Generate a new Rust Project:<br>
-```cargo new hello_world [--vcs=git]```<br>
+```cargo new hello_world [--vcs git]```<br>
 optional param overrides behavior and adds .gitignore in an existing Git repo
+
+Generate a new Rust Project (without a Git repo):<br>
+```cargo new hello_world ---vcs none```
 
 Running ```cargo new``` also creates Cargo.toml
 ```toml
