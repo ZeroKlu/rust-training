@@ -1,5 +1,5 @@
 fn main() {
-    // Can contain multiple data types
+    // Tuples can contain multiple data types
     let tup: (i32, f64, u8) = (500, 6.4, 1);
 
     // Access using `<tuple_name>.<index>`
@@ -8,7 +8,10 @@ fn main() {
     let one = tup.2;
     println!("{}, {}, {}", five_hundred, six_point_four, one);
 
-    // Can deconstruct
+    // You can destructure a tuple into multiple variables
     let (x, y, z) = tup;
     println!("{x}, {y}, {z}");
+
+    let product = x as f64 * y * z as f64;
+    println!("{product}");
 }
