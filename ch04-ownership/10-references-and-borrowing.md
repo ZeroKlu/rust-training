@@ -125,7 +125,7 @@ workaround, we can pass the string by reference instead.
 fn main() {
     let s1 = String::from("hello"); // s1 comes into scope
     // Passing the reference pointer (&s) does not transfer ownership
-    let len = calculate_length(&s);
+    let len = calculate_length(&s1);
     println!("Length of '{s1}' is {len} characters."); // s1 is still valid
 } // s1 goes out of scope and is dropped, because it is still valid
 
