@@ -6,10 +6,10 @@
 >
 > > Response<br>
 > > 
-> > ○ It can improve compile times
-> > ◉ It gives your tests access to private functions
-> > ○ It can reduce the size of generated compiler artifacts
-> > ○ It separates test helper functions from library code
+> > ○ It can improve compile times<br>
+> > ◉ It gives your tests access to private functions<br>
+> > ○ It can reduce the size of generated compiler artifacts<br>
+> > ○ It separates test helper functions from library code<br>
 > >
 > ---
 

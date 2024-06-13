@@ -1,3 +1,6 @@
+use std::thread;
+use std::time::Duration;
+
 #[derive(Debug, PartialEq, Copy, Clone)]
 enum ShirtColor {
     Red,
@@ -10,6 +13,7 @@ struct Inventory {
 
 impl Inventory {
     fn giveaway(&self, user_preference: Option<ShirtColor>) -> ShirtColor {
+        // Passing closure `|| self.most_stocked()`
         user_preference.unwrap_or_else(|| self.most_stocked())
     }
 
@@ -31,6 +35,8 @@ impl Inventory {
     }
 }
 
+fn  add_one_v1   (x: u32) -> u32 { x + 1 }
+
 fn main() {
     let store = Inventory {
         shirts: vec![ShirtColor::Blue, ShirtColor::Red, ShirtColor::Blue],
@@ -49,4 +55,27 @@ fn main() {
         "The user with preference {:?} gets {:?}",
         user_pref2, giveaway2
     );
+
+    let expensive_closure = |num: u32 | -> u32 {
+        println!("calculating slowly...");
+        thread::sleep(Duration::from_secs(2));
+        num
+    };
+
+    let res = expensive_closure(2);
+    println!("{}", res);
+
+    let add_one_v2 = |x: u32| -> u32 { x + 1 };
+    let add_one_v3 = |x|             { x + 1 };
+    let add_one_v4 = |x|               x + 1  ;
+
+    let mut n: u32 = 0;
+    n = add_one_v1(n);
+    println!("{}", n);
+    n = add_one_v2(n);
+    println!("{}", n);
+    n = add_one_v3(n);
+    println!("{}", n);
+    n = add_one_v4(n);
+    println!("{}", n);
 }
